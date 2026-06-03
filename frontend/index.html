@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>District Collectorate Assistance System – Coimbatore</title>
+  <meta name="description" content="Connect directly with the District Collector of Coimbatore. File complaints, request appointments, send appreciation, and get AI-powered assistance." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>" />
+</head>
+<body>
+<div class="app-wrapper">
+
+  <!-- ════════════════════════════════════════════
+       HEADER
+  ════════════════════════════════════════════ -->
+  <header class="header">
+    <div class="header-inner">
+      <a class="logo" href="#">
+        <div class="logo-icon">🏛️</div>
+        <div class="logo-text">
+          <h1>Collectorate Assist</h1>
+          <p>Coimbatore District, Tamil Nadu</p>
+        </div>
+      </a>
+      <div class="header-badge">
+        <span class="dot"></span>
+        AI-Powered System Online
+      </div>
+    </div>
+  </header>
+
+  <!-- ════════════════════════════════════════════
+       TAB NAVIGATION
+  ════════════════════════════════════════════ -->
+  <nav class="tab-nav">
+    <div class="tab-nav-inner">
+      <button class="tab-btn active" data-tab="home" id="tab-home">
+        <span class="tab-icon">🏠</span> Home
+      </button>
+      <button class="tab-btn" data-tab="citizen" id="tab-citizen">
+        <span class="tab-icon">👤</span> Citizen Portal
+      </button>
+      <button class="tab-btn" data-tab="track" id="tab-track">
+        <span class="tab-icon">🔍</span> Track Status
+      </button>
+      <button class="tab-btn" data-tab="announcements" id="tab-announcements">
+        <span class="tab-icon">📢</span> Announcements
+      </button>
+      <button class="tab-btn" data-tab="collector" id="tab-collector">
+        <span class="tab-icon">🛡️</span> Collector Dashboard
+      </button>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- ══════════════════════════════════════════
+         HOME TAB
+    ══════════════════════════════════════════ -->
+    <section class="tab-panel active" id="panel-home">
+
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero-content">
+          <h2>Your Voice Reaches the<br/>District Collector Directly</h2>
+          <p>An AI-powered multi-agent system to file complaints, request appointments, send appreciation messages, and get instant answers — all in one place.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="switchTab('citizen')">⚡ Get Started</button>
+            <button class="btn btn-outline" onclick="openChat()">🤖 Ask AI Assistant</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid-auto" style="margin-bottom:2rem" id="home-stats">
+        <div class="stat-card">
+          <div class="stat-icon icon-purple" style="background:rgba(108,99,255,0.2)">📋</div>
+          <div class="stat-info">
+            <h3 id="stat-complaints">0</h3>
+            <p>Complaints Filed</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(0,212,170,0.2)">📅</div>
+          <div class="stat-info">
+            <h3 id="stat-appointments">0</h3>
+            <p>Appointments Requested</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(247,183,49,0.2)">🙏</div>
+          <div class="stat-info">
+            <h3 id="stat-thanks">0</h3>
+            <p>Appreciations Sent</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background:rgba(34,197,94,0.2)">✅</div>
+          <div class="stat-info">
+            <h3 id="stat-resolved">0</h3>
+            <p>Issues Resolved</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="section-header"><h2>Quick Actions</h2></div>
+      <div class="quick-actions">
+        <div class="quick-card" onclick="switchTab('citizen'); setSubTab('complaint')">
+          <div class="quick-icon">📝</div>
+          <h4>File Complaint</h4>
+          <p>Report any public issue to the collector</p>
+        </div>
+        <div class="quick-card" onclick="switchTab('citizen'); setSubTab('appointment')">
+          <div class="quick-icon">📅</div>
+          <h4>Book Appointment</h4>
+          <p>Request a meeting with the collector</p>
+        </div>
+        <div class="quick-card" onclick="switchTab('citizen'); setSubTab('thanksgiving')">
+          <div class="quick-icon">🙏</div>
+          <h4>Send Appreciation</h4>
+          <p>Thank a government official for good work</p>
+        </div>
+        <div class="quick-card" onclick="openChat()">
+          <div class="quick-icon">🤖</div>
+          <h4>AI Chatbot</h4>
+          <p>Get instant answers to your queries</p>
+        </div>
+      </div>
+
+      <!-- How It Works -->
+      <div class="section-header" style="margin-top:2rem"><h2>How It Works</h2></div>
+      <div class="card">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:rgba(108,99,255,0.2)">1️⃣</div>
+            <div class="timeline-content">
+              <h4>Submit Your Request</h4>
+              <p>File a complaint, request an appointment, or send appreciation through the Citizen Portal</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:rgba(0,212,170,0.2)">🤖</div>
+            <div class="timeline-content">
+              <h4>AI Agent Processing</h4>
+              <p>Our multi-agent RAG system powered by LangChain categorizes your request, assigns priority, and routes it correctly</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:rgba(245,158,11,0.2)">🛡️</div>
+            <div class="timeline-content">
+              <h4>Collector Reviews</h4>
+              <p>The District Collector reviews all submissions from the secure dashboard and responds officially</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:rgba(34,197,94,0.2)">✅</div>
+            <div class="timeline-content">
+              <h4>Resolution & Feedback</h4>
+              <p>Track your ticket, receive official responses, and provide feedback on the resolution</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Emergency Numbers -->
+      <div class="section-header" style="margin-top:2rem"><h2>Emergency Contacts</h2></div>
+      <div class="grid-3">
+        <div class="card" style="text-align:center; border-color:rgba(239,68,68,0.3)">
+          <div style="font-size:2rem; margin-bottom:8px">🚨</div>
+          <h3 style="color:#ff8080; font-family:'Outfit',sans-serif">100</h3>
+          <p style="color:var(--text-secondary);font-size:0.85rem">Police Control Room</p>
+        </div>
+        <div class="card" style="text-align:center; border-color:rgba(239,68,68,0.3)">
+          <div style="font-size:2rem; margin-bottom:8px">🚑</div>
+          <h3 style="color:#ff8080; font-family:'Outfit',sans-serif">108</h3>
+          <p style="color:var(--text-secondary);font-size:0.85rem">Ambulance</p>
+        </div>
+        <div class="card" style="text-align:center; border-color:rgba(108,99,255,0.3)">
+          <div style="font-size:2rem; margin-bottom:8px">📞</div>
+          <h3 style="color:#a5b4fc; font-family:'Outfit',sans-serif">1100</h3>
+          <p style="color:var(--text-secondary);font-size:0.85rem">CM Cell (Toll Free)</p>
+        </div>
+        <div class="card" style="text-align:center; border-color:rgba(245,158,11,0.3)">
+          <div style="font-size:2rem; margin-bottom:8px">👩</div>
+          <h3 style="color:#fde68a; font-family:'Outfit',sans-serif">181</h3>
+          <p style="color:var(--text-secondary);font-size:0.85rem">Women Helpline</p>
+        </div>
+        <div class="card" style="text-align:center; border-color:rgba(34,197,94,0.3)">
+          <div style="font-size:2rem; margin-bottom:8px">👶</div>
+          <h3 style="color:#86efac; font-family:'Outfit',sans-serif">1098</h3>
+          <p style="color:var(--text-secondary);font-size:0.85rem">Childline</p>
+        </div>
+        <div class="card" style="text-align:center; border-color:rgba(0,212,170,0.3)">
+          <div style="font-size:2rem; margin-bottom:8px">🏛️</div>
+          <h3 style="color:#5eead4; font-family:'Outfit',sans-serif; font-size:1.1rem">0422-2390111</h3>
+          <p style="color:var(--text-secondary);font-size:0.85rem">District Control Room</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         CITIZEN PORTAL TAB
+    ══════════════════════════════════════════ -->
+    <section class="tab-panel" id="panel-citizen">
+      <div class="section-header">
+        <h2>Citizen Portal</h2>
+        <p>Submit complaints, book appointments, or send appreciation messages to the District Collector</p>
+      </div>
+
+      <!-- Sub Tabs -->
+      <div class="sub-tabs" id="citizen-subtabs">
+        <button class="sub-tab-btn active" data-subtab="complaint" onclick="setSubTab('complaint')">📝 File Complaint</button>
+        <button class="sub-tab-btn" data-subtab="appointment" onclick="setSubTab('appointment')">📅 Book Appointment</button>
+        <button class="sub-tab-btn" data-subtab="thanksgiving" onclick="setSubTab('thanksgiving')">🙏 Send Appreciation</button>
+      </div>
+
+      <!-- COMPLAINT FORM -->
+      <div id="subtab-complaint">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title">
+              <div class="card-icon icon-purple">📝</div>
+              File a Complaint / Grievance
+            </div>
+            <div id="complaint-result"></div>
+            <form id="complaint-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="c-name">Full Name *</label>
+                  <input type="text" id="c-name" placeholder="Your full name" required />
+                </div>
+                <div class="form-group">
+                  <label for="c-phone">Phone Number *</label>
+                  <input type="tel" id="c-phone" placeholder="+91 XXXXX XXXXX" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="c-address">Address / Location</label>
+                <input type="text" id="c-address" placeholder="Your address or location of issue" />
+              </div>
+              <div class="form-group">
+                <label for="c-type">Submission Type</label>
+                <select id="c-type">
+                  <option value="complaint">Complaint / Grievance</option>
+                  <option value="suggestion">Suggestion</option>
+                  <option value="feedback">General Feedback</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="c-desc">Description *</label>
+                <textarea id="c-desc" placeholder="Describe your issue in detail. The AI agent will auto-categorize and assign priority..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full" id="complaint-submit-btn">
+                ⚡ Submit with AI Analysis
+              </button>
+            </form>
+          </div>
+          <div>
+            <div class="card" style="margin-bottom:1rem">
+              <div class="card-title"><div class="card-icon icon-teal">🤖</div> AI Agent Processing</div>
+              <p style="color:var(--text-secondary);font-size:0.88rem;margin-bottom:1rem">Our LangChain AI agents will automatically:</p>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="display:flex;gap:10px;align-items:center;font-size:0.85rem">
+                  <span style="color:var(--accent)">✓</span> Categorize your complaint (Infrastructure, Health, PDS, etc.)
+                </div>
+                <div style="display:flex;gap:10px;align-items:center;font-size:0.85rem">
+                  <span style="color:var(--accent)">✓</span> Assign priority (Critical → High → Medium → Low)
+                </div>
+                <div style="display:flex;gap:10px;align-items:center;font-size:0.85rem">
+                  <span style="color:var(--accent)">✓</span> Generate a unique Ticket ID for tracking
+                </div>
+                <div style="display:flex;gap:10px;align-items:center;font-size:0.85rem">
+                  <span style="color:var(--accent)">✓</span> Route to the correct department
+                </div>
+                <div style="display:flex;gap:10px;align-items:center;font-size:0.85rem">
+                  <span style="color:var(--accent)">✓</span> Estimate resolution timeline
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-title"><div class="card-icon icon-red">⚠️</div> Priority Guide</div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span class="badge badge-critical">CRITICAL</span>
+                  <span style="font-size:0.8rem;color:var(--text-secondary)">Life-threatening, Corruption</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span class="badge badge-high">HIGH</span>
+                  <span style="font-size:0.8rem;color:var(--text-secondary)">Affects many people</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span class="badge badge-medium">MEDIUM</span>
+                  <span style="font-size:0.8rem;color:var(--text-secondary)">Important service issue</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <span class="badge badge-low">LOW</span>
+                  <span style="font-size:0.8rem;color:var(--text-secondary)">Minor inconvenience</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- APPOINTMENT FORM -->
+      <div id="subtab-appointment" style="display:none">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title"><div class="card-icon icon-teal">📅</div> Request Appointment with Collector</div>
+            <div id="appointment-result"></div>
+            <form id="appointment-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="a-name">Full Name *</label>
+                  <input type="text" id="a-name" placeholder="Your full name" required />
+                </div>
+                <div class="form-group">
+                  <label for="a-phone">Phone Number *</label>
+                  <input type="tel" id="a-phone" placeholder="+91 XXXXX XXXXX" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="a-address">Address</label>
+                <input type="text" id="a-address" placeholder="Your address" />
+              </div>
+              <div class="form-group">
+                <label for="a-date">Preferred Date (Optional)</label>
+                <input type="date" id="a-date" min="" />
+              </div>
+              <div class="form-group">
+                <label for="a-purpose">Purpose of Meeting *</label>
+                <textarea id="a-purpose" rows="4" placeholder="Describe why you need to meet the Collector. Be specific about the issue, its impact, and what action you are seeking..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-accent btn-full" id="appt-submit-btn">
+                📅 Request Appointment
+              </button>
+            </form>
+          </div>
+          <div>
+            <div class="card" style="margin-bottom:1rem">
+              <div class="card-title"><div class="card-icon icon-gold">ℹ️</div> Appointment Information</div>
+              <div style="display:flex;flex-direction:column;gap:12px;font-size:0.88rem">
+                <div class="detail-row">
+                  <span class="detail-label">Public Hearing Day</span>
+                  <span class="detail-value" style="color:var(--accent)">Every Monday, 10AM–1PM</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Regular Slots</span>
+                  <span class="detail-value">Tue–Fri, 11AM–1PM & 3PM–5PM</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Normal Response</span>
+                  <span class="detail-value">2–3 working days</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Urgent Response</span>
+                  <span class="detail-value" style="color:var(--accent2)">Within 24 hours</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label">Control Room</span>
+                  <span class="detail-value">0422-2390111</span>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-title"><div class="card-icon icon-blue">📋</div> What to Bring</div>
+              <ul style="color:var(--text-secondary);font-size:0.85rem;padding-left:1.2rem;line-height:2">
+                <li>Government-issued ID proof</li>
+                <li>Appointment confirmation (ID)</li>
+                <li>All relevant supporting documents</li>
+                <li>Previous complaint ticket IDs (if any)</li>
+                <li>2 passport size photographs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- THANKSGIVING FORM -->
+      <div id="subtab-thanksgiving" style="display:none">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-title"><div class="card-icon icon-gold">🙏</div> Send Appreciation / Thanksgiving</div>
+            <div id="thanks-result"></div>
+            <form id="thanksgiving-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="t-name">Your Name *</label>
+                  <input type="text" id="t-name" placeholder="Your full name" required />
+                </div>
+                <div class="form-group">
+                  <label for="t-phone">Phone Number</label>
+                  <input type="tel" id="t-phone" placeholder="+91 XXXXX XXXXX" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="t-dept">Department / Official to Appreciate</label>
+                <select id="t-dept">
+                  <option value="District Collector">District Collector</option>
+                  <option value="Revenue Department">Revenue Department</option>
+                  <option value="PDS Department">PDS / Ration Department</option>
+                  <option value="Social Welfare">Social Welfare Department</option>
+                  <option value="Health Department">Health Department</option>
+                  <option value="Education Department">Education Department</option>
+                  <option value="Police Department">Police Department</option>
+                  <option value="Public Works">Public Works Department</option>
+                  <option value="Other">Other Department</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="t-msg">Your Appreciation Message *</label>
+                <textarea id="t-msg" rows="5" placeholder="Share your experience and appreciation. Your kind words motivate our officials to serve better..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-gold btn-full" id="thanks-submit-btn">
+                🙏 Send Appreciation
+              </button>
+            </form>
+          </div>
+          <div class="card" style="height:fit-content">
+            <div class="card-title"><div class="card-icon icon-gold">💛</div> Why Your Appreciation Matters</div>
+            <p style="color:var(--text-secondary);font-size:0.88rem;line-height:1.8">
+              Thanksgiving messages are officially recorded in the government system and forwarded directly to the concerned official and their department head. This positively impacts performance evaluations and motivates dedicated civil servants to continue their good work.
+            </p>
+            <div style="margin-top:1.5rem;padding:1rem;background:rgba(247,183,49,0.08);border:1px solid rgba(247,183,49,0.2);border-radius:var(--radius-md)">
+              <p style="font-size:0.85rem;color:#fde68a">
+                🌟 "A word of appreciation can inspire a thousand acts of service."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         TRACK STATUS TAB
+    ══════════════════════════════════════════ -->
+    <section class="tab-panel" id="panel-track">
+      <div class="section-header">
+        <h2>Track Your Request</h2>
+        <p>Enter your Ticket ID or Appointment ID to check the current status</p>
+      </div>
+      <div class="grid-2">
+        <div>
+          <!-- Track Complaint -->
+          <div class="card" style="margin-bottom:1.5rem">
+            <div class="card-title"><div class="card-icon icon-purple">🔍</div> Track Complaint</div>
+            <div style="display:flex;gap:10px;margin-bottom:1rem">
+              <input type="text" id="track-id" placeholder="Enter Ticket ID (e.g. CMP-1234)" style="flex:1" />
+              <button class="btn btn-primary" onclick="trackComplaint()">Track</button>
+            </div>
+            <div id="track-result"></div>
+          </div>
+
+          <!-- Steps guide -->
+          <div class="card">
+            <div class="card-title"><div class="card-icon icon-teal">📊</div> Status Lifecycle</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="display:flex;align-items:center;gap:12px;font-size:0.85rem">
+                <span class="badge badge-received">Received</span>
+                <span style="color:var(--text-secondary)">Complaint registered, AI analysis done</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;font-size:0.85rem">
+                <span class="badge badge-progress" style="white-space:nowrap">In Progress</span>
+                <span style="color:var(--text-secondary)">Assigned to department, under investigation</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;font-size:0.85rem">
+                <span class="badge badge-resolved">Resolved</span>
+                <span style="color:var(--text-secondary)">Issue addressed, action taken</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;font-size:0.85rem">
+                <span class="badge badge-pending">Closed</span>
+                <span style="color:var(--text-secondary)">Formally closed after resolution</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent activity placeholder -->
+        <div class="card">
+          <div class="card-title"><div class="card-icon icon-blue">📋</div> How to Use Ticket ID</div>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="padding:14px;background:rgba(108,99,255,0.08);border:1px solid rgba(108,99,255,0.2);border-radius:var(--radius-md)">
+              <p style="font-size:0.85rem;color:var(--primary-light);font-weight:600;margin-bottom:6px">📝 Complaint Tickets</p>
+              <p style="font-size:0.82rem;color:var(--text-secondary)">Format: <strong style="color:#fff">CMP-XXXX</strong><br/>Received after filing a complaint</p>
+            </div>
+            <div style="padding:14px;background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.2);border-radius:var(--radius-md)">
+              <p style="font-size:0.85rem;color:var(--accent);font-weight:600;margin-bottom:6px">📅 Appointment IDs</p>
+              <p style="font-size:0.82rem;color:var(--text-secondary)">Format: <strong style="color:#fff">APT-XXXX</strong><br/>Received after appointment request</p>
+            </div>
+            <div style="padding:14px;background:rgba(247,183,49,0.08);border:1px solid rgba(247,183,49,0.2);border-radius:var(--radius-md)">
+              <p style="font-size:0.85rem;color:var(--gold);font-weight:600;margin-bottom:6px">🙏 Thanksgiving IDs</p>
+              <p style="font-size:0.82rem;color:var(--text-secondary)">Format: <strong style="color:#fff">THX-XXXX</strong><br/>Received after sending appreciation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         ANNOUNCEMENTS TAB
+    ══════════════════════════════════════════ -->
+    <section class="tab-panel" id="panel-announcements">
+      <div class="section-header">
+        <h2>Collector's Messages & Announcements</h2>
+        <p>Latest official communications from the District Collector to the citizens of Coimbatore</p>
+      </div>
+      <div id="announcements-list">
+        <div class="empty-state">
+          <div class="empty-icon">📢</div>
+          <h3>No Announcements Yet</h3>
+          <p>The collector hasn't posted any announcements. Check back soon.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+         COLLECTOR DASHBOARD TAB
+    ══════════════════════════════════════════ -->
+    <section class="tab-panel" id="panel-collector">
+
+      <!-- LOGIN SCREEN -->
+      <div class="collector-login-screen" id="collector-login-screen">
+        <div class="login-icon">🛡️</div>
+        <div class="section-header">
+          <h2>Collector Dashboard</h2>
+          <p>Secure access for District Collector and authorized staff only</p>
+        </div>
+        <div class="card">
+          <div id="login-result"></div>
+          <div class="form-group">
+            <label for="collector-pass">Access Password</label>
+            <input type="password" id="collector-pass" placeholder="Enter collector password" 
+                   onkeydown="if(event.key==='Enter') collectorLogin()" />
+          </div>
+          <button class="btn btn-primary btn-full" onclick="collectorLogin()">🔐 Login to Dashboard</button>
+          <p style="font-size:0.75rem;color:var(--text-muted);text-align:center;margin-top:1rem">
+            Demo password: <code style="color:var(--accent)">collector@2024</code>
+          </p>
+        </div>
+      </div>
+
+      <!-- DASHBOARD -->
+      <div class="collector-dashboard" id="collector-dashboard">
+        <!-- Header row -->
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem">
+          <div class="section-header" style="margin-bottom:0">
+            <h2>🛡️ Collector Dashboard</h2>
+            <p>Manage complaints, appointments, and communications</p>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="collectorLogout()">🔒 Logout</button>
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div class="grid-auto" style="margin-bottom:2rem" id="dashboard-stats">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(108,99,255,0.2)">📋</div>
+            <div class="stat-info">
+              <h3 id="d-total-complaints">0</h3><p>Total Complaints</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(239,68,68,0.2)">🔴</div>
+            <div class="stat-info">
+              <h3 id="d-critical">0</h3><p>Critical Priority</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(34,197,94,0.2)">✅</div>
+            <div class="stat-info">
+              <h3 id="d-resolved">0</h3><p>Resolved</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:rgba(0,212,170,0.2)">📅</div>
+            <div class="stat-info">
+              <h3 id="d-appointments">0</h3><p>Appointments</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub navigation -->
+        <div class="sub-tabs">
+          <button class="sub-tab-btn active" onclick="showDashTab('complaints')">📋 Complaints</button>
+          <button class="sub-tab-btn" onclick="showDashTab('appointments')">📅 Appointments</button>
+          <button class="sub-tab-btn" onclick="showDashTab('messages')">🙏 Appreciations</button>
+          <button class="sub-tab-btn" onclick="showDashTab('announce')">📢 Post Announcement</button>
+        </div>
+
+        <!-- COMPLAINTS LIST -->
+        <div id="dash-complaints">
+          <div class="filter-bar">
+            <select id="filter-status" onchange="loadDashboardComplaints()">
+              <option value="">All Status</option>
+              <option value="Received">Received</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Resolved">Resolved</option>
+              <option value="Closed">Closed</option>
+            </select>
+            <select id="filter-priority" onchange="loadDashboardComplaints()">
+              <option value="">All Priority</option>
+              <option value="CRITICAL">Critical</option>
+              <option value="HIGH">High</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="LOW">Low</option>
+            </select>
+            <button class="btn btn-outline btn-sm" onclick="loadDashboardComplaints()">🔄 Refresh</button>
+          </div>
+          <div class="card" style="overflow-x:auto">
+            <div id="complaints-table-container">
+              <div class="empty-state"><div class="empty-icon">📋</div><h3>Loading...</h3></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- APPOINTMENTS LIST -->
+        <div id="dash-appointments" style="display:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+            <h3 style="font-family:'Outfit',sans-serif;font-size:1.1rem">Appointment Requests</h3>
+            <button class="btn btn-outline btn-sm" onclick="loadDashboardAppointments()">🔄 Refresh</button>
+          </div>
+          <div class="card" style="overflow-x:auto">
+            <div id="appointments-table-container">
+              <div class="empty-state"><div class="empty-icon">📅</div><h3>Loading...</h3></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MESSAGES LIST -->
+        <div id="dash-messages" style="display:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+            <h3 style="font-family:'Outfit',sans-serif;font-size:1.1rem">Appreciation Messages</h3>
+            <button class="btn btn-outline btn-sm" onclick="loadDashboardMessages()">🔄 Refresh</button>
+          </div>
+          <div id="messages-list-container">
+            <div class="empty-state"><div class="empty-icon">🙏</div><h3>Loading...</h3></div>
+          </div>
+        </div>
+
+        <!-- POST ANNOUNCEMENT -->
+        <div id="dash-announce" style="display:none">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-title"><div class="card-icon icon-purple">📢</div> Post Public Announcement</div>
+              <div id="announce-result"></div>
+              <form id="announce-form">
+                <div class="form-group">
+                  <label for="ann-title">Announcement Title *</label>
+                  <input type="text" id="ann-title" placeholder="e.g. Special Camp for Ration Card Renewal" required />
+                </div>
+                <div class="form-group">
+                  <label for="ann-type">Announcement Type</label>
+                  <select id="ann-type">
+                    <option value="General">General Notice</option>
+                    <option value="Scheme">Welfare Scheme</option>
+                    <option value="Event">Public Event / Camp</option>
+                    <option value="Emergency">Emergency Alert</option>
+                    <option value="Achievement">Achievement / Success</option>
+                    <option value="Personal">Collector's Message</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="ann-collector">Collector's Name</label>
+                  <input type="text" id="ann-collector" placeholder="Dr. S. Soundarajan, IAS" value="District Collector, Coimbatore" />
+                </div>
+                <div class="form-group">
+                  <label for="ann-content">Message Content *</label>
+                  <textarea id="ann-content" rows="6" placeholder="Write your official message to the citizens of Coimbatore district..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">📢 Publish Announcement</button>
+              </form>
+            </div>
+            <div class="card">
+              <div class="card-title"><div class="card-icon icon-teal">📋</div> Recent Announcements</div>
+              <div id="recent-announcements-dash">
+                <div class="empty-state" style="padding:2rem"><div class="empty-icon">📢</div><h3>No announcements yet</h3></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- /main -->
+</div><!-- /app-wrapper -->
+
+<!-- ══════════════════════════════════════════
+     CHATBOT FAB
+══════════════════════════════════════════ -->
+<div class="chatbot-fab">
+  <div class="chat-window hidden" id="chat-window">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">🤖</div>
+        <div>
+          <div class="chat-name">District AI Assistant</div>
+          <div class="chat-status">RAG-Powered · Always Online</div>
+        </div>
+      </div>
+      <button class="chat-close-btn" onclick="closeChat()">✕</button>
+    </div>
+    <div class="chat-predefined" id="quick-questions"></div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="msg bot">
+        <div class="msg-avatar">🤖</div>
+        <div class="msg-bubble">
+          👋 Hello! I'm your District Collectorate AI Assistant powered by RAG & LangChain.<br/><br/>
+          I can help you with complaints, appointments, government schemes, certificates, and more!<br/><br/>
+          Click a quick question below or type your query.
+        </div>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <input class="chat-input" id="chat-input" placeholder="Type your question..." 
+             onkeydown="if(event.key==='Enter') sendChat()" />
+      <button class="chat-send-btn" onclick="sendChat()">➤</button>
+    </div>
+  </div>
+  <button class="chat-toggle-btn" onclick="toggleChat()" id="chat-fab" title="AI Assistant">🤖</button>
+</div>
+
+<!-- ══════════════════════════════════════════
+     COMPLAINT RESPONSE MODAL
+══════════════════════════════════════════ -->
+<div class="modal-overlay hidden" id="complaint-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Complaint Details</div>
+      <button class="modal-close" onclick="closeModal('complaint-modal')">✕</button>
+    </div>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<!-- Appointment Response Modal -->
+<div class="modal-overlay hidden" id="appt-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Respond to Appointment</div>
+      <button class="modal-close" onclick="closeModal('appt-modal')">✕</button>
+    </div>
+    <div id="appt-modal-body"></div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toast-container"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
